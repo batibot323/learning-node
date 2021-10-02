@@ -4,12 +4,17 @@ const express = require('express');
 const { Server } = require('http');
 const app = express();
 
+const readline = require('readline').createInterface({
+    input: process.stdin,
+    output: process.stdout
+});
+
+readline.question(`What's your age?`, age => {
+    console.log(`You're ${age} years old.`);
+    readline.close();
+})
+
 app.get('/', (req, res) => {
-    // Run with
-    // node ./getting-started.js --name=Hani --age=30
-    const args = require('minimist')(process.argv.slice(2))
-    console.log(args['name']);
-    console.log(args['age']);
     res.send('Hi!');
 });
 
