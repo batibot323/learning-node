@@ -3,4 +3,4 @@ const food = {
     rating: 9
 };
 
-module.exports = food;
+exports.myType = food;
