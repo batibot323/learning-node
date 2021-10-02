@@ -1,11 +1,21 @@
 #!/usr/bin/env node
 
-const readline = require('readline').createInterface({
-    input: process.stdin,
-    output: process.stdout
-});
+const inquirer = require('inquirer');
 
-readline.question(`What's your age? `, age => {
-    console.log(`You're ${age} years old.`);
-    readline.close();
+var questions = [
+    {
+        type: 'input',
+        name: 'age',
+        message: 'How old are you?'
+    },
+    {
+        type: 'input',
+        name: 'favoriteAnimal',
+        message: `What's your favorite animal?`
+    }
+];
+
+inquirer.prompt(questions).then(answers => {
+    console.log(`You're ${answers['age']} years old.`);
+    console.log(`I also love ${answers['favoriteAnimal']}!`);
 })
