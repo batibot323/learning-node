@@ -6,10 +6,10 @@ const app = express();
 
 app.get('/', (req, res) => {
     // Run with
-    // node ./getting-started.js Hani
-    process.argv.forEach((val, index) => {
-        console.log(`${index}: ${val}`)
-    });
+    // node ./getting-started.js --name=Hani --age=30
+    const args = require('minimist')(process.argv.slice(2))
+    console.log(args['name']);
+    console.log(args['age']);
     res.send('Hi!');
 });
 
