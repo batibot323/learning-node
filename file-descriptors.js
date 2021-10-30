@@ -2,6 +2,17 @@
 
 const fs = require('fs')
 
-fs.open('./quotes.txt', 'r', (err, fd) => {
-    console.log(fd);
+fs.stat('./quotes.txt', (err, stats) => {
+    console.log(stats.isFile());
+    console.log(stats.isDirectory());
+    console.log(stats.isSymbolicLink());
+    console.log(stats.size);
 })
+
+
+
+const stats = fs.statSync('./quotes.txt')
+console.log(stats.isFile());
+console.log(stats.isDirectory());
+console.log(stats.isSymbolicLink());
+console.log(stats.size);
